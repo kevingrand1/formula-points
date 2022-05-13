@@ -1,0 +1,10 @@
+.DS_Store
+logs/*
+!logs/.gitkeep
+data/
+.docker/data
+.docker/rabbitmq/data
+.docker/rabbitmq/logs
+rabbitmq
+app/.env.local.php
+.idea
