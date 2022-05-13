@@ -10,6 +10,10 @@ services:
         container_name: formula_points_mysql
         volumes:
             - data_storage:/var/lib/mysql
+        networks:
+            default:
+                aliases:
+                    - 'mysql.formula-points'
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -17,6 +21,7 @@ services:
             MYSQL_DATABASE: ${MYSQL_DATABASE}
         ports:
             - "3306:3306"
+
 
     php:
         build: .docker/php
