@@ -47,6 +47,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $lastName;
 
+    #[ORM\Column(type: 'datetime')]
+    private ?\DateTimeInterface $registerAt;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $isVerified = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,5 +145,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->lastName = $lastName;
 
         return $this;
+    }
+
+    public function getRegisterAt(): ?\DateTimeInterface
+    {
+        return $this->registerAt;
+    }
+
+    public function setRegisterAt(\DateTimeInterface $registerAt): self
+    {
+        $this->registerAt = $registerAt;
+
+        return $this;
+    }
+
+    public function isVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->firstName.' '.$this->lastName;
     }
 }
