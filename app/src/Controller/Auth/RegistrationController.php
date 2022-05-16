@@ -3,7 +3,7 @@
 namespace App\Controller\Auth;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+use App\Form\Auth\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use DateTime;
@@ -54,7 +54,8 @@ class RegistrationController extends AbstractController
                 )
 
             )
-            ->setRegisterAt(New DateTime());
+            ->setRegisterAt(New DateTime())
+            ->setRoles(['ROLE_USER']);
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -72,7 +73,7 @@ class RegistrationController extends AbstractController
 
         $this->addFlash('success', 'Votre compte a bien été crée, veuillez confirmer votre adresse mail');
 
-            return $this->redirectToRoute('site_index');
+            return $this->redirectToRoute('login');
 
         }
 

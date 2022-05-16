@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Auth;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
@@ -42,9 +42,10 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'label' => 'Accepter les termes d\'utilisation',
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les termes d\'utilisation',
                     ]),
                 ],
             ])

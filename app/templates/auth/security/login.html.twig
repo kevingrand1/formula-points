@@ -9,9 +9,6 @@
             <h1>Connexion</h1>
         </div>
         <form method="post" class="row d-flex justify-content-center">
-            {% if error %}
-                <div class="col-md-7 mb-3 alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
             {% include 'utils/alert.html.twig' %}
 
             <div class="col-md-7 mb-3">

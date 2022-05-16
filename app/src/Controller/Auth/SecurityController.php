@@ -17,7 +17,8 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('admin_index');
             }
 
-            return $this->redirectToRoute('site_index');
+            return $this->redirectToRoute('dashboard');
+
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
