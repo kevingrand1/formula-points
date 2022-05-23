@@ -2,7 +2,7 @@ FROM php:8.1.5-fpm
 
 RUN apt update \
     && apt install -y --no-install-recommends vim curl debconf git apt-transport-https apt-utils \
-    build-essential locales acl mailutils wget zip unzip libsodium-dev \
+    build-essential locales acl mailutils wget zip unzip libsodium-dev nodejs npm \
     libpng-dev libicu-dev libzip-dev libxml2-dev libexif-dev wkhtmltopdf \
     gnupg gnupg1 gnupg2 \
     && docker-php-ext-install gd \
@@ -20,6 +20,10 @@ RUN apt update \
 
 RUN echo 'date.timezone="Europe/Paris"' >> /usr/local/etc/php/conf.d/date.ini
 RUN usermod -u 1000 www-data
+
+RUN curl -sSk --silent --show-error https://getcomposer.org/installer | php -- --disable-tls && \
+    mv composer.phar /usr/local/bin/composer
+
 
 RUN rm -rf /var/lib/apt/lists/*
 RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \

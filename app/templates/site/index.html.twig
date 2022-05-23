@@ -1,10 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SiteController!{% endblock %}
+{% block title %}LandingPage{% endblock %}
 
 {% block body %}
-<h1>Site index</h1>
-    {% if is_granted('ROLE_USER') %}
-    <a href="{{ path('logout') }}"> Déconnexion</a>
-    {% endif%}
+
+   <div class="row text-center d-flex justify-content-md-center">
+   {% for driver in drivers %}
+      <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+         <div class="card">
+            <div class="card-body">
+               <h5 class="card-title">{{ driver.getFullName}} #{{ driver.permanentNumber }}</h5>
+               <p class="card-text">{{ driver.getAge }} ans</p>
+               <p class="card-text">{{ driver.nationality }}</p>
+            </div>
+         </div>
+      </div>
+   {% endfor %}
+   </div>
 {% endblock %}
