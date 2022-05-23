@@ -11,9 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     #[Route('/dashboard', name: 'admin_index')]
-    public function index(UserRepository $users): Response
+    public function index(UserRepository $users): ?Response
     {
-        dd($users->getAllUsers());
 
         return $this->render('admin/index.html.twig');
     }

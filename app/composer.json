@@ -29,7 +29,7 @@
         "symfonycasts/verify-email-bundle": "^1.10",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.0",
-      "ext-http": "*"
+      "ext-curl": "*"
     },
     "config": {
         "allow-plugins": {
