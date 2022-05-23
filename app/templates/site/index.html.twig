@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SiteController!{% endblock %}
+
+{% block body %}
+<h1>Site index</h1>
+    {% if is_granted('ROLE_USER') %}
+    <a href="{{ path('logout') }}"> Déconnexion</a>
+    {% endif%}
+{% endblock %}
